@@ -1,1 +1,6 @@
-/nbactions.xml
+*.class
+
+# Package Files #
+*.jar
+*.war
+*.ear
