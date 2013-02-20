@@ -85,7 +85,8 @@
         <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.0/js/bootstrap.min.js"></script>
         
         <script type="text/javascript" src="js/vendor/paper.js"></script>
-        <script type="text/javascript" src="//raw.github.com/chrisbloe/tournament-engine/master/tournament-engine/src/main/webapp/js/knockout.js"></script>
+        <script type="text/javascript" src="js/vendor/knockout.js"></script>
+<!--        <script type="text/javascript" src="//raw.github.com/chrisbloe/tournament-engine/master/tournament-engine/src/main/webapp/js/knockout.js"></script>-->
         <script type="text/javascript" src="js/tournament.js"></script>
     </body>
 </html>
