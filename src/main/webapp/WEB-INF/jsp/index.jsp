@@ -69,7 +69,9 @@
                             </div>
                         </form>
                     </div>
-                    <div id="knockoutTournament" class="span9"></div>
+                    <div class="span9">
+                        <div id="knockoutTournament"></div>
+                    </div>
                 </div>
             </div>
             <footer>
