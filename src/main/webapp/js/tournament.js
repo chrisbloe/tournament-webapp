@@ -1,11 +1,14 @@
 $(document).ready(function(){
     "use strict";
     
-    var knockout = $('#knockout-tournament').knockout({});
+    var $knockoutTournament = $('#knockout-tournament');
     
-//    knockout.Events("editMatch").subscribe(function(value){
-//        alert("Selected match: " + value);
-//    });
+    var knockout = $knockoutTournament.knockout({});
+    
+    $knockoutTournament.on("editMatch", function(event, editMatchEvent){
+        alert("Selected match: " + editMatchEvent.position);
+        editMatchEvent.preventDefault();
+    });
     
     var TournamentCreator = function(){
         var $tournamentTitle = $("#tournamentTitle");
