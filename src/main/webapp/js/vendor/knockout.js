@@ -9,7 +9,7 @@
         return {
             allowDefault   : true,
             preventDefault : function(){
-                allowDefault = false;
+                this.allowDefault = false;
             }
         };
     };
@@ -720,13 +720,13 @@
      * @example
      *     Creating a new random tournament from a group of teams:
      *     
-     *     $('#knockout-tournament').knockout({
+     *     $('#knockoutTournament').knockout({
      *         teams : ['Huddersfield', 'Man Utd', 'West Ham', 'Swindon', 'Morecambe', 'Blackburn', 'Coventry', 'Liverpool']
      *     });
      *     
      *     Showing an existing knockoutTournament:
      *     
-     *     $('#knockout-tournament').knockout({
+     *     $('#knockoutTournament').knockout({
      *         knockoutTournament : {
      *             title     : "This is my frikkin' awesome tournament 2!",
      *             names     : ['', '', 'West Ham', 'Coventry', 'Man Utd', 'West Ham', 'Blackburn', 'Coventry', 'Huddersfield', 'Man Utd', 'West Ham', 'Swindon', 'Morecambe', 'Blackburn', 'Coventry', 'Liverpool'],
@@ -738,7 +738,7 @@
      *     
      *     displayOptions edit the UI:
      *     
-     *     $('#knockout-tournament').knockout({
+     *     $('#knockoutTournament').knockout({
      *         displayOptions : {
      *             lineLength     : 0.2, // For far between the rounds the lines meet
      *             textSize       : 10,   // Font size
@@ -747,7 +747,7 @@
      *     
      *     To register a match edit listener (optional):
      *     
-     *     $('#knockout-tournament').on("editMatch", function(event, editMatchEvent){
+     *     $('#knockoutTournament').on("editMatch", function(event, editMatchEvent){
      *         alert("Selected match: " + editMatchEvent.position);
      *         editMatchEvent.preventDefault(); // Prevents the plugin from showing its own UI
      *     });

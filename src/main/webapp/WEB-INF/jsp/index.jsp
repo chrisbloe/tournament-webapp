@@ -13,24 +13,26 @@
     </head>
     <body>
         <div class="container">
-            <div class="masthead">
-                <h3 class="muted">Tournament Engine</h3>
-                <div class="navbar">
-                    <div class="navbar-inner">
-                        <div class="container">
-                            <ul class="nav">
-                                <li class="active"><a href="#">Home</a></li>
-                                <li><a href="#tournaments">Tournaments</a></li>
-                                <li><a href="#teams">Teams</a></li>
-                                <li><a href="#individuals">Individuals</a></li>
-                            </ul>
+            <header>
+                <div class="masthead">
+                    <h3 class="muted">Tournament Engine</h3>
+                    <div class="navbar">
+                        <div class="navbar-inner">
+                            <div class="container">
+                                <ul id="menu" class="nav">
+                                    <li class="active"><a href="#">Home</a></li>
+                                    <li><a href="#tournaments">Tournaments</a></li>
+                                    <li><a href="#teams">Teams</a></li>
+                                    <li><a href="#individuals">Individuals</a></li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </header>
             <div class="container">
                 <div class="row-fluid">
-                    <div class="span3">
+                    <div id="createTournamentForm" class="span3">
                         <form>
                             <h2 class="form-horizontal-heading">Create tournament</h2>
                             <div class="control-group">
@@ -67,13 +69,11 @@
                             </div>
                         </form>
                     </div>
-                    <div class="span9">
-                        <div id="knockout-tournament"></div>
-                    </div>
+                    <div id="knockoutTournament" class="span9"></div>
                 </div>
             </div>
             <footer>
-                <p>A CustardCoding production <script>document.write(new Date().getFullYear());</script></p>
+                <p>A CustardCoding production 2013</p>
             </footer>
         </div>
         
@@ -85,10 +85,14 @@
         <script type="text/javascript" src="//code.jquery.com/ui/1.10.1/jquery-ui.min.js"></script>
 <!--        <script type="text/javascript" src="js/vendor/jquery-ui.js"></script>-->
         <script type="text/javascript" src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.0/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="//underscorejs.org/underscore.js"></script>
+        <script type="text/javascript" src="//backbonejs.org/backbone-min.js"></script>
         
         <script type="text/javascript" src="js/vendor/paper.js"></script>
         <script type="text/javascript" src="js/vendor/knockout.js"></script>
 <!--        <script type="text/javascript" src="//raw.github.com/chrisbloe/tournament-engine/master/tournament-engine/src/main/webapp/js/knockout.js"></script>-->
+        <script type="text/javascript" src="js/views/TournamentCreatorView.js"></script>
+        <script type="text/javascript" src="js/views/KnockoutTournamentView.js"></script>
         <script type="text/javascript" src="js/tournament.js"></script>
     </body>
 </html>
