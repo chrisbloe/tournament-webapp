@@ -3,6 +3,10 @@ $(document).ready(function(){
     
     var knockout = $('#knockout-tournament').knockout({});
     
+//    knockout.Events("editMatch").subscribe(function(value){
+//        alert("Selected match: " + value);
+//    });
+    
     var TournamentCreator = function(){
         var $tournamentTitle = $("#tournamentTitle");
         var $newTeam = $("#newTeam");
