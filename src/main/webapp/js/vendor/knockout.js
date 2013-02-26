@@ -81,7 +81,7 @@
     var KnockoutTournament = function(teams, knockoutTournament){
         var tournament = {
             title       : "",
-            names       : [''],
+            schedule    : [''],
             locations   : [''],
             scores      : [['', '']],
             fixtures    : [['', '']],
@@ -98,13 +98,13 @@
             },
             
             addResult   : function(result){
-                this.names[this.position] = result.winner;
+                this.schedule[this.position] = result.winner;
                 this.scores[this.position][0] = result.scores[0];
                 this.scores[this.position][1] = result.scores[1];
             },
             
             reset       : function(){
-                this.names     = [''],
+                this.schedule     = [''],
                 this.locations = [''],
                 this.scores    = [['', '']],
                 this.fixtures  = [['', '']],
@@ -122,7 +122,7 @@
                 
                 // Set later rounds to blank
                 for(var position = 0; position < minPosition; position++){
-                    this.names[position] = '';
+                    this.schedule[position] = '';
                 }
                 
                 var firstRound = [];
@@ -141,7 +141,7 @@
                 
                 // Append the first round to the end of the earlier rounds
                 for(var k = minPosition; k <= maxPosition; k++){
-                    this.names.push(firstRound[k - minPosition]);
+                    this.schedule.push(firstRound[k - minPosition]);
                 }
                 
                 // Fill in the other parts
@@ -248,7 +248,7 @@
 
             var participant = new paper.PointText(new paper.Point(boxes[i].position.x, y));
             participant.justification = 'center';
-            participant.content = tournament.names[i];
+            participant.content = tournament.schedule[i];
             participant.characterStyle = { fontSize: displayOptions.textSize };
         };
 
@@ -317,16 +317,16 @@
         };
 
         var addByes = function(){
-            var maxDepth = Math.ceil((Math.log(tournament.names.length))/(Math.log(2)));
+            var maxDepth = Math.ceil((Math.log(tournament.schedule.length))/(Math.log(2)));
             var minPosition = Math.pow(2, maxDepth - 1);
             
             for(var i = minPosition - 1; i > 0; i--){
-                if(tournament.names[i * 2] === '-'){
-                    tournament.names[i] = tournament.names[i * 2 + 1];
+                if(tournament.schedule[i * 2] === '-'){
+                    tournament.schedule[i] = tournament.schedule[i * 2 + 1];
                     addText(i);
                 } else {
-                    if(tournament.names[i * 2 + 1] === '-'){
-                        tournament.names[i] = tournament.names[i * 2];
+                    if(tournament.schedule[i * 2 + 1] === '-'){
+                        tournament.schedule[i] = tournament.schedule[i * 2];
                         addText(i);
                     }
                 }
@@ -335,14 +335,14 @@
 
         var addSuccessColors = function(){
             for(var i = 1; i < Math.pow(2, depth); i++){
-                var winningTeam = tournament.names[i];
+                var winningTeam = tournament.schedule[i];
                 
                 if(winningTeam !== '' && winningTeam !== '-'){
-                    if(winningTeam === tournament.names[i * 2]){
+                    if(winningTeam === tournament.schedule[i * 2]){
                         boxes[i * 2].strokeColor = 'green';
                     }
 
-                    if(winningTeam === tournament.names[i * 2 + 1]){
+                    if(winningTeam === tournament.schedule[i * 2 + 1]){
                         boxes[i * 2 + 1].strokeColor = 'green';
                     }
                 }
@@ -373,8 +373,8 @@
             $matchFixtureContainer.hide();
             $matchResultContainer.hide();
             
-            var team1 = tournament.names[position * 2];
-            var team2 = tournament.names[position * 2 + 1];
+            var team1 = tournament.schedule[position * 2];
+            var team2 = tournament.schedule[position * 2 + 1];
 
             $matchDataContainer.dialog("open");
 
@@ -417,8 +417,8 @@
                         }
                         
                         if(box2Y + displayOptions.height / 2 > y){
-                            var team1 = tournament.names[j * 2];
-                            var team2 = tournament.names[j * 2 + 1];
+                            var team1 = tournament.schedule[j * 2];
+                            var team2 = tournament.schedule[j * 2 + 1];
                             
                             if(team1 !== "-" && team2 !== "-"){
                                 return j;
@@ -436,7 +436,7 @@
         var init = function(){
             paper.setup(canvas);
             
-            depth = Math.floor((Math.log(tournament.names.length - 1))/(Math.log(2)));
+            depth = Math.floor((Math.log(tournament.schedule.length - 1))/(Math.log(2)));
             startx = depth * (displayOptions.width + displayOptions.widthDistance) + displayOptions.border;
             starty = displayOptions.heightDistance * (Math.pow(2, depth) - 1) + displayOptions.border * 1.5;
             
@@ -484,7 +484,7 @@
             
             setCanvasDimentions();
             
-            if(tournament.names.length > 1){
+            if(tournament.schedule.length > 1){
                 if(tournament.title !== ''){
                     addTitle();
                 }
@@ -605,7 +605,7 @@
              * @example
              *     knockoutTournament : {
              *         title     : "This is my frikkin' awesome tournament 2!",
-             *         names     : ['', '', 'West Ham', 'Coventry', 'Man Utd', 'West Ham', 'Blackburn', 'Coventry', 'Huddersfield', 'Man Utd', 'West Ham', 'Swindon', 'Morecambe', 'Blackburn', 'Coventry', 'Liverpool'],
+             *         schedule  : ['', '', 'West Ham', 'Coventry', 'Man Utd', 'West Ham', 'Blackburn', 'Coventry', 'Huddersfield', 'Man Utd', 'West Ham', 'Swindon', 'Morecambe', 'Blackburn', 'Coventry', 'Liverpool'],
              *         locations : ['', 'Wembley', 'Old Trafford', 'Ewood Park', 'Galpharm Stadium', 'Upton Park', 'Globe Arena', 'Ricoh Arena'],
              *         scores    : [['', ''], ['', ''], ['1 (1)', '4 (3)'], ['0 (0)', '2 (2)'], ['0 (0)', '0* (0) [2-4]'], ['1* (0) [6-5]', '1 (1)'], ['4 (3)', '5 (4)'], ['4 (1)', '2 (0)']],
              *         fixtures  : [['', ''], ['18/10/2013', '15:00'], ['11/10/2013', '15:00'], ['', ''], ['', ''], ['', ''], ['', ''], ['', '']]
@@ -634,6 +634,7 @@
                 tournament.reset();
                 tournament.createRandomTournament(title, teams);
                 init();
+                return tournament;
             }
         };
     };
@@ -729,7 +730,7 @@
      *     $('#knockoutTournament').knockout({
      *         knockoutTournament : {
      *             title     : "This is my frikkin' awesome tournament 2!",
-     *             names     : ['', '', 'West Ham', 'Coventry', 'Man Utd', 'West Ham', 'Blackburn', 'Coventry', 'Huddersfield', 'Man Utd', 'West Ham', 'Swindon', 'Morecambe', 'Blackburn', 'Coventry', 'Liverpool'],
+     *             schedule  : ['', '', 'West Ham', 'Coventry', 'Man Utd', 'West Ham', 'Blackburn', 'Coventry', 'Huddersfield', 'Man Utd', 'West Ham', 'Swindon', 'Morecambe', 'Blackburn', 'Coventry', 'Liverpool'],
      *             locations : ['', 'Wembley', 'Old Trafford', 'Ewood Park', 'Galpharm Stadium', 'Upton Park', 'Globe Arena', 'Ricoh Arena'],
      *             scores    : [['', ''], ['', ''], ['1 (1)', '4 (3)'], ['0 (0)', '2 (2)'], ['0 (0)', '0* (0) [2-4]'], ['1* (0) [6-5]', '1 (1)'], ['4 (3)', '5 (4)'], ['4 (1)', '2 (0)']],
      *             fixtures  : [['', ''], ['18/10/2013', '15:00'], ['11/10/2013', '15:00'], ['', ''], ['', ''], ['', ''], ['', ''], ['', '']]
