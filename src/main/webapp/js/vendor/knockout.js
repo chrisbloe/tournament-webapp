@@ -99,7 +99,11 @@
             },
             
             addResult   : function(result){
-                this.schedule[this.position] = result.winner;
+                var winner = result.scores[0] !== "" && result.scores[1] !== ""
+                           ? result.winner
+                           : "";
+                
+                this.schedule[this.position] = winner;
                 this.scores[this.position][0] = result.scores[0];
                 this.scores[this.position][1] = result.scores[1];
             },
