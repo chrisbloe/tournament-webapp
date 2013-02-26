@@ -81,6 +81,7 @@
     var KnockoutTournament = function(teams, knockoutTournament){
         var tournament = {
             title       : "",
+            teams       : teams,
             schedule    : [''],
             locations   : [''],
             scores      : [['', '']],
@@ -114,6 +115,7 @@
             
             createRandomTournament : function(title, teams){
                 this.title = title;
+                this.teams = teams;
                 
                 var maxDepth = Math.ceil((Math.log(teams.length))/(Math.log(2)));
                 
@@ -384,10 +386,12 @@
             $fixtureTime.val(tournament.fixtures[position][1]);
 
             if(team1 !== "" && team2 !== ""){
+                var currentWinner = tournament.schedule[position];
+                
                 $winner.empty();
-                $winner.append(new Option("Winner", ""));
-                $winner.append(new Option(team1, team1));
-                $winner.append(new Option(team2, team2));
+                $winner.append(new Option("Winner", "", true));
+                $winner.append(new Option(team1, team1, false, currentWinner === team1));
+                $winner.append(new Option(team2, team2, false, currentWinner === team2));
                 $homeScore.val(tournament.scores[position][0]);
                 $awayScore.val(tournament.scores[position][1]);
                 $matchResultContainer.show();

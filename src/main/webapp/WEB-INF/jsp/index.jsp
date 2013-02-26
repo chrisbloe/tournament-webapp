@@ -71,6 +71,33 @@
                     </div>
                     <div class="span9">
                         <div id="knockoutTournament"></div>
+                        <form id="matchEditor" hidden="hidden">
+                            <div class="span2 match-fixture-container">
+                                <h4 class="form-horizontal-heading">Edit match</h4>
+                                <div class="control-group">
+                                    <div class="controls">
+                                        <input type="text" class="fixture-date input-medium" placeholder="Date" maxlength="10" />
+                                        <input type="time" class="fixture-time input-medium" placeholder="Time" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="span2 offset1 match-result-container">
+                                <div class="control-group">
+                                    <div class="controls">
+                                        <select class="winner input-medium" />
+                                        <input type="text" class="home-score input-medium" placeholder="Home score" />
+                                        <input type="text" class="away-score input-medium" placeholder="Away score" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="span2 offset1">
+                                <div class="control-group">
+                                    <div class="controls">
+                                        <button type="button" class="btn btn-primary end-editing-button">Sorted.</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -95,6 +122,7 @@
 <!--        <script type="text/javascript" src="//raw.github.com/chrisbloe/tournament-engine/master/tournament-engine/src/main/webapp/js/knockout.js"></script>-->
         <script type="text/javascript" src="js/views/TournamentCreatorView.js"></script>
         <script type="text/javascript" src="js/views/KnockoutTournamentView.js"></script>
+        <script type="text/javascript" src="js/views/EditMatchView.js"></script>
         <script type="text/javascript" src="js/tournament.js"></script>
     </body>
 </html>

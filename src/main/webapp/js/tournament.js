@@ -1,10 +1,11 @@
 $(document).ready(function(){
     "use strict";
     
-    var NewTournament = Backbone.Model.extend({});
+    var Tournament = Backbone.Model.extend({});
     
-    var tournament = new NewTournament();
+    var tournament = new Tournament();
     
     new TournamentCreatorView({model: tournament});
+    new EditMatchView({model: tournament});
     new KnockoutTournamentView({model: tournament});
 });
