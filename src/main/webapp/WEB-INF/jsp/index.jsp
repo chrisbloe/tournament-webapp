@@ -38,7 +38,7 @@
                             <div class="control-group">
                                 <label class="control-label" for="tournamentTitle">Title</label>
                                 <div class="controls">
-                                    <input type="text" id="tournamentTitle" placeholder="Title" />
+                                    <input type="text" id="tournamentTitle" placeholder="Title" autofocus />
                                 </div>
                             </div>
                             <br />
@@ -69,7 +69,7 @@
                             </div>
                         </form>
                     </div>
-                    <div class="span9">
+                    <div id="results" class="span9">
                         <div id="knockoutTournament"></div>
                         <form id="matchEditor" hidden="hidden">
                             <div class="span2 match-fixture-container">
@@ -123,6 +123,7 @@
         <script type="text/javascript" src="js/views/TournamentCreatorView.js"></script>
         <script type="text/javascript" src="js/views/KnockoutTournamentView.js"></script>
         <script type="text/javascript" src="js/views/EditMatchView.js"></script>
+        <script type="text/javascript" src="js/views/ResultsView.js"></script>
         <script type="text/javascript" src="js/tournament.js"></script>
     </body>
 </html>

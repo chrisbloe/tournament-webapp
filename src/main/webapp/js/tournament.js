@@ -6,6 +6,6 @@ $(document).ready(function(){
     var tournament = new Tournament();
     
     new TournamentCreatorView({model: tournament});
-    new EditMatchView({model: tournament});
-    new KnockoutTournamentView({model: tournament});
+    
+    new ResultsView({model: tournament});
 });

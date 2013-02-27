@@ -8,19 +8,7 @@ var TournamentCreatorView = Backbone.View.extend({
     $removeTeamButton: $("#removeTeam"),
     $createTournamentButton: $("#createTournament"),
 
-    initialize: function(){
-        this.$newTeam.focus();
-    },
-
-    updateTournament: function(){
-        var teams = [];
-
-        $("#currentTeams option").each(function(i, option){
-            teams[i] = $(option).text();
-        });
-        
-        this.model.set({title: this.$tournamentTitle.val(), teams: teams});
-    },
+//    initialize: function(){},
 
     /**
      * Sorts all of the options in a select element
@@ -63,15 +51,12 @@ var TournamentCreatorView = Backbone.View.extend({
     events: {
         "click #addTeam": "addTeam",
         "click #removeTeam": "removeTeam",
-        "click #createTournament": "createTournament",
-        "keyup #tournamentTitle": "updateTournament",
-        "change #tournamentTitle": "updateTournament"
+        "click #createTournament": "createTournament"
     },
 
     addTeam: function(){
         this.$currentTeams.append("<option value='"+this.$newTeam.val()+"'>"+this.$newTeam.val()+"</option>");
         this.sortOptions(this.$currentTeams[0]);
-        this.updateTournament();
 
         this.$newTeam.val("");
         this.$newTeam.focus();
@@ -79,12 +64,17 @@ var TournamentCreatorView = Backbone.View.extend({
 
     removeTeam: function(){
         $("#currentTeams :selected").remove();
-        this.updateTournament();
 
         this.$newTeam.focus();
     },
 
     createTournament: function(){
-        this.updateTournament();
+        var teams = [];
+
+        $("#currentTeams option").each(function(i, option){
+            teams[i] = $(option).text();
+        });
+
+        this.model.set({title: this.$tournamentTitle.val(), teams: teams});
     }
 });
