@@ -1,11 +1,27 @@
-$(document).ready(function(){
-    "use strict";
+;
+var app = app || {};
+
+(function() {
+    'use strict';
     
-    var Tournament = Backbone.Model.extend({});
+    app.Tournament = Backbone.Model.extend({});
     
-    var tournament = new Tournament();
+    var tournament = new app.Tournament();
     
-    new TournamentCreatorView({model: tournament});
+    var tournamentCreatorView = new app.TournamentCreatorView({
+        model: tournament
+    });
     
-    new ResultsView({model: tournament});
-});
+    var resultsView = new app.ResultsView({
+        model: tournament
+    });
+    
+    new app.Router({
+        tournamentCreatorView: tournamentCreatorView,
+        resultsView: resultsView
+    });
+    
+    $(function(){
+        Backbone.history.start();	
+    });
+})();

@@ -21,7 +21,7 @@
                             <div class="container">
                                 <ul id="menu" class="nav">
                                     <li class="active"><a href="#">Home</a></li>
-                                    <li><a href="#tournaments">Tournaments</a></li>
+                                    <li><a href="#tournament">Tournament</a></li>
                                     <li><a href="#teams">Teams</a></li>
                                     <li><a href="#individuals">Individuals</a></li>
                                 </ul>
@@ -32,72 +32,75 @@
             </header>
             <div class="container">
                 <div class="row-fluid">
-                    <div id="createTournamentForm" class="span3">
-                        <form>
-                            <h2 class="form-horizontal-heading">Create tournament</h2>
-                            <div class="control-group">
-                                <label class="control-label" for="tournamentTitle">Title</label>
-                                <div class="controls">
-                                    <input type="text" id="tournamentTitle" placeholder="Title" autofocus />
-                                </div>
-                            </div>
-                            <br />
-                            <div class="control-group">
-                                <label class="control-label" for="newTeam">New team</label>
-                                <div class="controls">
-                                    <input type="text" id="newTeam" placeholder="New team" />
-                                </div>
-                                <div class="controls">
-                                    <button type="button" class="btn" id="addTeam">Add team</button>
-                                </div>
-                            </div>
-                            <br />
-                            <div class="control-group">
-                                <label class="control-label" for="currentTeams">Teams</label>
-                                <div class="controls">
-                                    <select multiple="multiple" id="currentTeams" size="7"></select>
-                                </div>
-                                <div class="controls">
-                                    <button type="button" class="btn" id="removeTeam">Remove selected team(s)</button>
-                                </div>
-                            </div>
-                            <br />
-                            <div class="control-group">
-                                <div class="controls">
-                                    <button type="button" class="btn btn-primary" id="createTournament">Create tournament</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                    <div id="results" class="span9">
-                        <div id="knockoutTournament"></div>
-                        <form id="matchEditor" hidden="hidden">
-                            <div class="span2 match-fixture-container">
-                                <h4 class="form-horizontal-heading">Edit match</h4>
+                    <div id="content">Loading...</div>
+                    <div id="contents" hidden="hidden">
+                        <div id="createTournamentForm" class="span3">
+                            <form>
+                                <h2 class="form-horizontal-heading">Create tournament</h2>
                                 <div class="control-group">
+                                    <label class="control-label" for="tournamentTitle">Title</label>
                                     <div class="controls">
-                                        <input type="text" class="fixture-date input-medium" placeholder="Date" maxlength="10" />
-                                        <input type="time" class="fixture-time input-medium" placeholder="Time" />
+                                        <input type="text" id="tournamentTitle" placeholder="Title" autofocus />
                                     </div>
                                 </div>
-                            </div>
-                            <div class="span2 offset1 match-result-container">
+                                <br />
                                 <div class="control-group">
+                                    <label class="control-label" for="newTeam">New team</label>
                                     <div class="controls">
-                                        <select class="winner input-medium" />
-                                        <input type="text" class="home-score input-medium" placeholder="Home score" />
-                                        <input type="text" class="away-score input-medium" placeholder="Away score" />
+                                        <input type="text" id="newTeam" placeholder="New team" />
+                                    </div>
+                                    <div class="controls">
+                                        <button type="button" class="btn" id="addTeam">Add team</button>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="span2 offset1">
+                                <br />
                                 <div class="control-group">
+                                    <label class="control-label" for="currentTeams">Teams</label>
                                     <div class="controls">
-                                        <button type="button" class="btn btn-primary end-editing-button">Sorted.</button>
+                                        <select multiple="multiple" id="currentTeams" size="7"></select>
+                                    </div>
+                                    <div class="controls">
+                                        <button type="button" class="btn" id="removeTeam">Remove selected team(s)</button>
                                     </div>
                                 </div>
-                            </div>
-                        </form>
+                                <br />
+                                <div class="control-group">
+                                    <div class="controls">
+                                        <button type="button" class="btn btn-primary" id="createTournament">Create tournament</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div id="results" class="span9">
+                            <div id="knockoutTournament"></div>
+                            <form id="matchEditor" hidden="hidden">
+                                <div class="span2 match-fixture-container">
+                                    <h4 class="form-horizontal-heading">Edit match</h4>
+                                    <div class="control-group">
+                                        <div class="controls">
+                                            <input type="text" class="fixture-date input-medium" placeholder="Date" maxlength="10" />
+                                            <input type="time" class="fixture-time input-medium" placeholder="Time" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="span2 offset1 match-result-container">
+                                    <div class="control-group">
+                                        <div class="controls">
+                                            <select class="winner input-medium" />
+                                            <input type="text" class="home-score input-medium" placeholder="Home score" />
+                                            <input type="text" class="away-score input-medium" placeholder="Away score" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="span2 offset1">
+                                    <div class="control-group">
+                                        <div class="controls">
+                                            <button type="button" class="btn btn-primary end-editing-button">Sorted.</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -124,6 +127,7 @@
         <script type="text/javascript" src="js/views/KnockoutTournamentView.js"></script>
         <script type="text/javascript" src="js/views/EditMatchView.js"></script>
         <script type="text/javascript" src="js/views/ResultsView.js"></script>
+        <script type="text/javascript" src="js/routers/Router.js"></script>
         <script type="text/javascript" src="js/tournament.js"></script>
     </body>
 </html>
