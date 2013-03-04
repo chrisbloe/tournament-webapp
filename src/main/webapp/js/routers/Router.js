@@ -6,10 +6,14 @@ var app = app || {};
     
     app.Router = Backbone.Router.extend({
         initialize : function(options) {
+            this.loading = $("#loading");
             this.tournamentCreatorView = options.tournamentCreatorView;
             this.resultsView = options.resultsView;
             
-            this.tournamentCreatorView.on("submit", $.proxy(this.tournament, this));
+            this.tournamentCreatorView.on("submit", $.proxy(function(){
+                    Backbone.history.navigate("tournament");
+                    this.tournament();
+                }), this);
         },
         
         routes: {
@@ -18,11 +22,15 @@ var app = app || {};
         },
         
         home: function(){
-            $("#content").html(this.tournamentCreatorView.$el);
+            this.loading.hide();
+            this.resultsView.$el.hide();
+            this.tournamentCreatorView.$el.show();
         },
         
         tournament: function(){
-            $("#content").html(this.resultsView.$el);
+            this.loading.hide();
+            this.tournamentCreatorView.$el.hide();
+            this.resultsView.$el.show();
         }
     });
 })(jQuery);

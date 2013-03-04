@@ -5,9 +5,11 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <link rel="icon" type="image/x-icon" href="favicon.ico" />
         
-        <link rel="stylesheet" href="//code.jquery.com/ui/1.10.1/themes/ui-lightness/jquery-ui.min.css" />
-<!--        <link rel="stylesheet" href="css/vendor/jquery-ui.css">-->
-        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.0/css/bootstrap-combined.min.css">
+<!--        <link rel="stylesheet" href="//code.jquery.com/ui/1.10.1/themes/ui-lightness/jquery-ui.min.css" />-->
+        <link rel="stylesheet" href="css/vendor/jquery-ui.css">
+<!--        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.0/css/bootstrap-combined.min.css">-->
+        <link rel="stylesheet" href="css/vendor/bootstrap.css">
+        <link rel="stylesheet" href="css/vendor/bootstrap-responsive.css">
         <link rel="stylesheet" href="css/tournamentEngine.css" />
         <title>Tournament Engine</title>
     </head>
@@ -31,48 +33,46 @@
                 </div>
             </header>
             <div class="container">
-                <div class="row-fluid">
-                    <div id="content">Loading...</div>
-                    <div id="contents" hidden="hidden">
-                        <div id="createTournamentForm" class="span3">
-                            <form>
-                                <h2 class="form-horizontal-heading">Create tournament</h2>
-                                <div class="control-group">
-                                    <label class="control-label" for="tournamentTitle">Title</label>
-                                    <div class="controls">
-                                        <input type="text" id="tournamentTitle" placeholder="Title" autofocus />
-                                    </div>
-                                </div>
-                                <br />
-                                <div class="control-group">
-                                    <label class="control-label" for="newTeam">New team</label>
-                                    <div class="controls">
-                                        <input type="text" id="newTeam" placeholder="New team" />
-                                    </div>
-                                    <div class="controls">
-                                        <button type="button" class="btn" id="addTeam">Add team</button>
-                                    </div>
-                                </div>
-                                <br />
-                                <div class="control-group">
-                                    <label class="control-label" for="currentTeams">Teams</label>
-                                    <div class="controls">
-                                        <select multiple="multiple" id="currentTeams" size="7"></select>
-                                    </div>
-                                    <div class="controls">
-                                        <button type="button" class="btn" id="removeTeam">Remove selected team(s)</button>
-                                    </div>
-                                </div>
-                                <br />
-                                <div class="control-group">
-                                    <div class="controls">
-                                        <button type="button" class="btn btn-primary" id="createTournament">Create tournament</button>
-                                    </div>
-                                </div>
-                            </form>
+                <div id="loading">Loading...</div>
+                <form id="createTournamentForm" class="span3" hidden="hidden">
+                    <h2 class="form-horizontal-heading">Create tournament</h2>
+                    <div class="control-group">
+                        <label class="control-label" for="tournamentTitle">Title</label>
+                        <div class="controls">
+                            <input type="text" id="tournamentTitle" placeholder="Title" autofocus />
                         </div>
-                        <div id="results" class="span9">
-                            <div id="knockoutTournament"></div>
+                    </div>
+                    <br />
+                    <div class="control-group">
+                        <label class="control-label" for="newTeam">New team</label>
+                        <div class="controls">
+                            <input type="text" id="newTeam" placeholder="New team" />
+                        </div>
+                        <div class="controls">
+                            <button type="button" class="btn" id="addTeam">Add team</button>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="control-group">
+                        <label class="control-label" for="currentTeams">Teams</label>
+                        <div class="controls">
+                            <select multiple="multiple" id="currentTeams" size="7"></select>
+                        </div>
+                        <div class="controls">
+                            <button type="button" class="btn" id="removeTeam">Remove selected team(s)</button>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="control-group">
+                        <div class="controls">
+                            <button type="button" class="btn btn-primary" id="createTournament">Create tournament</button>
+                        </div>
+                    </div>
+                </form>
+                <div id="results" class="span9" hidden="hidden">
+                    <div class="row-fluid">
+                        <div class="span9">
+                        <div id="knockoutTournament"></div>
                             <form id="matchEditor" hidden="hidden">
                                 <div class="span2 match-fixture-container">
                                     <h4 class="form-horizontal-heading">Edit match</h4>
@@ -109,16 +109,17 @@
             </footer>
         </div>
         
-        <script type="text/javascript" src="//code.jquery.com/jquery-latest.min.js"></script>
-        <script type="text/javascript">
-            window.jQuery || document.write('<script type="text/javascript" src="js/vendor/jquery.js"><\/script>');
-        </script>
-        <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.1.1.min.js"></script>
-        <script type="text/javascript" src="//code.jquery.com/ui/1.10.1/jquery-ui.min.js"></script>
-<!--        <script type="text/javascript" src="js/vendor/jquery-ui.js"></script>-->
-        <script type="text/javascript" src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.0/js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="//underscorejs.org/underscore.js"></script>
-        <script type="text/javascript" src="//backbonejs.org/backbone-min.js"></script>
+<!--        <script type="text/javascript" src="//code.jquery.com/jquery-latest.min.js"></script>-->
+        <script type="text/javascript" src="js/vendor/jquery.js"></script>
+<!--        <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.1.1.min.js"></script>-->
+<!--        <script type="text/javascript" src="//code.jquery.com/ui/1.10.1/jquery-ui.min.js"></script>-->
+        <script type="text/javascript" src="js/vendor/jquery-ui.js"></script>
+<!--        <script type="text/javascript" src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.0/js/bootstrap.min.js"></script>-->
+        <script type="text/javascript" src="js/vendor/bootstrap.js"></script>
+<!--        <script type="text/javascript" src="//underscorejs.org/underscore.js"></script>-->
+        <script type="text/javascript" src="js/vendor/underscore.js"></script>
+<!--        <script type="text/javascript" src="//backbonejs.org/backbone-min.js"></script>-->
+        <script type="text/javascript" src="js/vendor/backbone.js"></script>
         
         <script type="text/javascript" src="js/vendor/paper.js"></script>
         <script type="text/javascript" src="js/vendor/knockout.js"></script>
